@@ -1,0 +1,53 @@
+name: Nexora Backend CI
+on:
+    pull_request:
+        branches:
+            - main
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: ${{github.workflow}}-${{github.ref}}
+    cancel-in-progress: true
+
+jobs:
+    nexora-backend-ci:
+        name: Nexora Backend CI
+        runs-on: ubuntu-latest
+
+        defaults:
+            run:
+                working-directory: backend
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.12"
+                  cache: pip
+                  cache-dependency-path: backend/pyproject.toml
+
+            - name: Install package and development dependencies
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install -e ".[dev]"
+            
+            - name: Check formatting
+              run: ruff format --check
+            
+            - name: Check linting
+              run: ruff check .
+            
+            - name: Check type hints
+              run: mypy src
+                  
+            - name: Run tests
+              run: pytest -v
