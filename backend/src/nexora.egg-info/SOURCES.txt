@@ -1,7 +1,10 @@
 pyproject.toml
 src/nexora/__init__.py
+src/nexora/bootstrap.py
+src/nexora/config.py
 src/nexora.egg-info/PKG-INFO
 src/nexora.egg-info/SOURCES.txt
 src/nexora.egg-info/dependency_links.txt
 src/nexora.egg-info/requires.txt
 src/nexora.egg-info/top_level.txt
+tests/test_config.py

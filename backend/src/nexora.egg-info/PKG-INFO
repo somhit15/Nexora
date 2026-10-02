@@ -3,6 +3,7 @@ Name: nexora
 Version: 0.1.0
 Summary: Nexora backend application
 Requires-Python: >=3.12
+Requires-Dist: pydantic-settings
 Provides-Extra: dev
 Requires-Dist: pre-commit; extra == "dev"
 Requires-Dist: pytest; extra == "dev"
