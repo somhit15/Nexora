@@ -1,5 +1,6 @@
 pyproject.toml
 src/nexora/__init__.py
+src/nexora/bootstrap.py
 src/nexora.egg-info/PKG-INFO
 src/nexora.egg-info/SOURCES.txt
 src/nexora.egg-info/dependency_links.txt
